@@ -1,0 +1,39 @@
+# Name to be shown in confirmation prompt
+name = "octopak";
+# Doesn't do anything yet
+author = "munchkinhalfling";
+
+# Shown if something goes wrong
+notify_dev_depends = ("Meson (sudo apt install meson)", "Ninja (included with Meson)", "A working C compiler", "A working Vala compiler");
+notify_depends = ("libjson-glib-1.0", "libsoup-2.4", "glib-2.0", "gobject-2.0");
+# `app`-based packages to be installed first.
+depends = ();
+dev_depends = ();
+
+# A list of scripts for build and install.
+scripts:
+(
+    {
+        # Name of the script
+        name = "configure";
+        # Commands
+        commands = ("rm -rf build", "meson build");
+    },
+    {
+        name = "build";
+        commands = ("ninja -C build");
+    }
+);
+
+# $prefix is the install root
+install = ("DESTDIR=$prefix ninja -C build install");
+
+# Binaries (and other files) to symlink
+files = (
+    {
+        # Path to symlink to (with / being ~/.local/)
+        install_path = "/bin/octopak";
+        # Path to the file in the install root (with / being the install root)
+        pkg_path = "/usr/local/bin/octopak";
+    }
+);
