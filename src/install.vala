@@ -31,6 +31,7 @@ namespace Octopak.Commands {
             var buildDir = @"$(Environment.get_variable("HOME"))/.local/share/octopak/build/$pkg";
             mkdirp(buildDir + "/", 0777);
             Posix.system(@"flatpak-builder '$buildDir' '$manifestDir/$manifestFilename' --force-clean --user --install");
+            return 0;
         }
     }
 }
