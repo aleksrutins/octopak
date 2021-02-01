@@ -27,10 +27,12 @@ namespace Octopak.Commands {
                 stdout.puts("\033[1;31mError\033[0m\n");
                 return 1;
             } // All streams are cleaned up here
-            stdout.puts(@"\033[1mBuilding & installing\033[0m\n");
+            stdout.puts(@"\033[1mChanging directories\033[0m\n");
             var buildDir = @"$(Environment.get_variable("HOME"))/.local/share/octopak/build/$pkg";
             mkdirp(buildDir + "/", 0777);
-            Posix.system(@"flatpak-builder '$buildDir' '$manifestDir/$manifestFilename' --force-clean --user --install");
+            Posix.chdir(buildDir);
+            stdout.puts(@"\033[1mBuilding & installing\033[0m\n");
+            Posix.system(@"flatpak-builder build-dir '$manifestDir/$manifestFilename' --force-clean --user --install");
             return 0;
         }
     }
