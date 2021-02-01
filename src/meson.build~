@@ -1,0 +1,13 @@
+octopak_sources = [
+  'main.vala',
+]
+
+octopak_deps = [
+  dependency('glib-2.0'),
+  dependency('gobject-2.0'),
+]
+
+executable('octopak', octopak_sources,
+  vala_args: '--target-glib=2.58',  dependencies: octopak_deps,
+  install: true,
+)
