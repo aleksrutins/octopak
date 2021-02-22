@@ -13,13 +13,13 @@ Create a file called `octopak.json` in your repository root, with the following 
     "manifest": "manifest url"
 }
 ```
-and fill in `manifest` with the relative path to your manifest (e.g. `com.munchkinhalfling.C19track2.json`).
+and fill in `manifest` with the relative path to your manifest (e.g. `com.rutins.C19track2.json`).
 ## Installing apps
 ```
 $ octopak install <org>/<repo>
 ```
-For example, to install [c19track2](https://github.com/munchkinhalfling/c19track2):
+For example, to install [c19track2](https://github.com/aleksrutins/c19track2):
 ```
-$ octopak install munchkinhalfling/c19track2
+$ octopak install aleksrutins/c19track2
 ```
 It will use the Flatpak user installation to install packages.
